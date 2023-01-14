@@ -8,6 +8,9 @@ import java.time.LocalDate;
 @RequestMapping(value = "/api")
 public class Horoscopo {
 
+    private SignoZodical signoZodical;
+
+
     //metodo post
     @PostMapping(value = "horoscopo")
     public String getSignoIngresado(@RequestBody SignoZodiacalPost signoZodiacalPost){
@@ -22,9 +25,7 @@ public class Horoscopo {
         int dia = LocalDate.parse(fecha).getDayOfMonth();
         int mes = LocalDate.parse(fecha).getMonthValue();
 
-        SignoZodical signoZodical=new SignoZodical(dia,mes);
-
-        return signoZodical.getSigno();
+        return signoZodical.getSigno(dia,mes);
 
     }
 }
